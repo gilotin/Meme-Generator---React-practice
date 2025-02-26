@@ -8,14 +8,9 @@ export default function Main() {
     });
 
     function handleChange(e) {
-        const { value } = e.target;
+        const { value, name } = e.target;
 
-        if (e.target.id === "topText") {
-            setMeme((prevState) => ({ ...prevState, topText: value }));
-        }
-        if (e.target.id === "bottomText") {
-            setMeme((prevState) => ({ ...prevState, bottomText: value }));
-        }
+        setMeme((prevState) => ({ ...prevState, [name]: value }));
     }
 
     return (
@@ -24,10 +19,10 @@ export default function Main() {
                 <label>
                     Top Text
                     <input
-                        id="topText"
                         type="text"
                         placeholder="One does not simply"
                         name="topText"
+                        value={meme.topText}
                         onChange={handleChange}
                     />
                 </label>
@@ -35,10 +30,10 @@ export default function Main() {
                 <label>
                     Bottom Text
                     <input
-                        id="bottomText"
                         type="text"
                         placeholder="Walk into Mordor"
                         name="bottomText"
+                        value={meme.bottomText}
                         onChange={handleChange}
                     />
                 </label>
